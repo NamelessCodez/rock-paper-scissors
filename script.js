@@ -45,9 +45,42 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+// create function to loop over 5 games and print the result
 
+function game() {
+    
+    let playerScore = 0;
+    let computerScore = 0;
 
-//create function to loop over 5 games and print the result
+    for (let i = 0; i < 5; i++) {
+
+        // prompt user for input
+        const playerSelection = prompt();
+        // generate computer move
+        const computerSelection = computerPlay();
+        
+
+        // print winner or loser of the round
+        console.log(playRound(playerSelection, computerSelection));
+
+        // give scores
+
+        if (playRound(playerSelection, computerSelection).includes("win")) {
+            playerScore++;
+        }
+        if (playRound(playerSelection, computerSelection).includes("lose")) {
+            computerScore++;
+        }
+    }
+    // print winner or loser of the game
+
+    if (playerScore > computerScore) {
+        console.log("Player won the game!");
+    }
+    else if (playerScore < computerScore) {
+        console.log("Computer won the game!");
+    }
+    else {
+        console.log("The game is a draw!");
+    }
+}
